@@ -155,7 +155,7 @@ function RenderMap(map, center) {
   });
   RenderMe(map);
   var last_point = GetStorage("last-point");
-  if (typeof(last_point) !== "undefined") {
+  if (last_point !== null) {
     g_last_point_marker = RenderPointMarker(last_point, map);
     RenderPointInfo(last_point);
   }
