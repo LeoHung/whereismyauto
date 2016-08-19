@@ -60,7 +60,9 @@ function Save() {
   if(confirm("Remeber the point at your location? \n (The last pin will be overwrited.)")) {
     // remove last marker
     var new_last_point = {lat:g_me.lat, lng:g_me.lng, time:RenderTime(new Date)};
-    g_last_point_marker.setMap(null);
+    if (typeof(g_last_point_marker) !== "undefined") {
+      g_last_point_marker.setMap(null);
+    }
     g_last_point_marker = RenderPointMarker(new_last_point, g_map);
     RenderPointInfo(new_last_point);
     SetStorage("last-point", new_last_point);
@@ -152,8 +154,11 @@ function RenderMap(map, center) {
     clickableIcons: false,
   });
   RenderMe(map);
-  g_last_point_marker = RenderPointMarker(GetStorage("last-point"), map);
-  RenderPointInfo(GetStorage("last-point"));
+  var last_point = GetStorage("last-point");
+  if (typeof(last_point) !== "undefined") {
+    g_last_point_marker = RenderPointMarker(last_point, map);
+    RenderPointInfo(last_point);
+  }
   g_map = map;
 }
 
