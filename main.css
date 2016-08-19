@@ -1,0 +1,43 @@
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+#control-panel {
+  position: fixed;
+  right: 2vw;
+  bottom: 5vh;
+  z-index: 100;
+}
+
+#last-point {
+  border-top: 1px solid #DDDDDD;
+  position: fixed;
+  background-color: #FFFFFF;
+  width: 100vw;
+  height: 12vh;
+  bottom: 0px;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.point-info-text {
+  padding: 10px;
+}
+
+.button {
+  padding: 5px;
+  z-index: 1;
+}
+.button .glyphicon {
+  font-size:24px;
+}
+
+.btn-circle.btn-lg {
+  width: 60px;
+  height: 60px;
+  padding: 10px 10px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 30px;
+}
