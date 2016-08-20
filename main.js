@@ -51,7 +51,11 @@ function RenderPointMarker(point, map) {
 function RenderPointInfo(point) {
   var info = $("<div>", {class:"point-info"})
   info.append($("<span>", {class: "glyphicon glyphicon-tags"}));
-  info.append($("<span>", {class: "point-info-text", text:"Last time : "+ point.time}));
+  // info.append($("<span>", {class: "point-info-text", text:"Last time : "+ point.time}));
+  var info_link = $("<a>", {class: "point-info-text", text:"Last time : " + point.time});
+  info_link.click(function() {g_map.panTo(point)});
+  info.append(info_link);
+
   $("#last-point").html("");
   $("#last-point").append(info);
 }
@@ -68,28 +72,6 @@ function Save() {
     SetStorage("last-point", new_last_point);
   }
 }
-
-// function AddPin() {
-//   var time = RenderTime(new Date());
-//   var point = {time: time, lat:g_me.lat, lng:g_me.lng};
-//   var map = g_map;
-
-//   var infowindow = new google.maps.InfoWindow({
-//     content: point.time});
-
-//   var marker = new google.maps.Marker({
-//     position: {lat: point.lat, lng:point.lng},
-//     title:point.time,
-//     map : map,
-//     animation: google.maps.Animation.BOUNCE
-//   });
-//   marker.addListener('mouseover', function() {
-//     infowindow.open(map, marker);
-//     });
-//   marker.addListener('mouseout', function() {
-//     infowindow.close();
-//     });
-// }
 
 function ReCenter() {
   RenderMe(g_map);
