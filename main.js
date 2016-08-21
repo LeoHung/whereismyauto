@@ -75,7 +75,6 @@ function Save() {
 
 function ReCenter() {
   RenderMe(g_map);
-  g_map.panTo(g_me);
 }
 
 function RenderMe(map) {
@@ -118,6 +117,8 @@ function RenderMe(map) {
       }
       g_me_markers = {me_marker:me_marker, me_halo_marker:me_halo_marker};
       g_me = me;
+
+      g_map.panTo(g_me);
     }
   );
 }
